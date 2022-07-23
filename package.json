@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "install": "cross-env CYPRESS_INSTALL_BINARY=C:\\CypressPOC\\cypress.zip npm install cypress --save-dev",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run --headed --browser chrome"
   },
   "author": "Ranji Thomas",
   "license": "ISC",

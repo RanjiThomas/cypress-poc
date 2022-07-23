@@ -24,7 +24,7 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-const OKTA_URL = "https://facdev.okta.com";
+const OKTA_URL = Cypress.env('oktaUrl');
 
 // Cypress.Cookies.debug(true);
 // Cypress.Cookies.defaults({

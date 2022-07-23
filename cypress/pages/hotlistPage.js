@@ -1,13 +1,12 @@
 import * as url from "url";
 
 class HotlistPage {
-    GATEWAY_URL = "https://gateway-service-design-d0ngl1wkh.dms.int.usw2.ficoanalyticcloud.com/";
 
     constructor() {
         this.url = "#/hotlist";
     }
 
-    pageContainer() { return cy.get('app-hotlist') };
+    get pageContainer() { return cy.get('app-hotlist') };
     spinner() { return cy.get('.modal-body .spinner') };
     actionButtons() { return cy.get('.action-buttons') };
     //     this.confirmChangeButton() { return cy.get('#confirmation-ok-btn') };
@@ -17,11 +16,11 @@ class HotlistPage {
 
     // Buttons
     // this.btnFilterToggle = this.pageContainer.get('#show-filter');
-    btnCreateHotlist() { return this.pageContainer().find('#create-hotlist') };
-    btnSaveChanges() { return this.pageContainer().find('#save-hotlist') };
-    btnSaveChangesDisabled() { return cy.get('#save-hotlist.disabled') };
+    get btnCreateHotlist() { return this.pageContainer.find('#create-hotlist') };
+    get btnSaveChanges() { return this.pageContainer.find('#save-hotlist') };
+    get btnSaveChangesDisabled() { return cy.get('#save-hotlist.disabled') };
     // Table
-    tableContainer() { return this.pageContainer().find('#hotlistTable') };
+    get tableContainer() { return this.pageContainer.find('#hotlistTable') };
     // this.tableHeader1 = this.tableContainer.get('th:nth-child(1)');
     // this.tableHeader2 = this.tableContainer.get('th:nth-child(2)');
     // this.tableHeader3 = this.tableContainer.get('th:nth-child(3)');
@@ -35,22 +34,24 @@ class HotlistPage {
     // this.lastUpdatedFilter = this.tableFilterContainer.get('#last-updated-filter');
     // this.clearFilter = this.tableFilterContainer.get('a');
 
-    tableR1Container() { return this.tableContainer().find('tbody tr:nth-child(1)') };
-    tableR1NameInput() { return this.tableR1Container().find('td:nth-child(1) input') };
-    tableR1NameField() { return this.tableR1Container().find('td:nth-child(1) span') };
-    tableR1DescriptionInput() { return this.tableR1Container().find('td:nth-child(2) span') };
-    tableR1DescriptionField() { return this.tableR1Container().find('td:nth-child(2) input') };
+    get tableR1Container() { return this.tableContainer.find('tbody tr:nth-child(1)') };
+    get tableR1NameInput() { return this.tableR1Container.find('td:nth-child(1) input') };
+    get tableR1NameField() { return this.tableR1Container.find('td:nth-child(1) span') };
+    get tableR1DescriptionInput() { return this.tableR1Container.find('td:nth-child(2) span') };
+    get tableR1DescriptionField() { return this.tableR1Container.find('td:nth-child(2) input') };
     // this.tableR1HotlistEntryField = this.tableR1Container.get('td:nth-child(1) span');
     // this.tableR1ActionsMenu = this.tableR1Container.get('button');
 
-    tableNameEntries() { return cy.get('#hotlistTable tbody td:nth-child(4)') };
-    tableR2Container() { return this.tableContainer().find('tbody tr:nth-child(2)') };
-    tableR3Container() { return this.tableContainer().find('tbody tr:nth-child(3)') };
-    tableName1() { return this.tableR1Container().find('td:nth-child(1)') };
-    tableName2() { return this.tableR2Container().find('td:nth-child(1)').invoke('text')};
-    tableText2() {
+    get tableNameEntries() { return cy.get('#hotlistTable tbody td:nth-child(4)') };
+    get tableR2Container() { return this.tableContainer.find('tbody tr:nth-child(2)') };
+    get tableR3Container() { return this.tableContainer.find('tbody tr:nth-child(3)') };
+
+
+    tableName1() { return this.tableR1Container.find('td:nth-child(1)').invoke('text') };
+    tableName2() { return this.tableR2Container.find('td:nth-child(1)').invoke('text')};
+    tableText1() {
         const text = new Cypress.Promise<string>((resolve) => {
-            cy.get('tbody tr:nth-child(2) td:nth-child(1)').text()
+            cy.get('tbody tr:nth-child(1) td:nth-child(1)').text()
                 .then((txt) => resolve(txt.toString()))
         });
         return text;
