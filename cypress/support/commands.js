@@ -25,20 +25,20 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 const OKTA_URL = Cypress.env('oktaUrl');
-
+import { default as users } from '../fixtures/users.json';
 // Cypress.Cookies.debug(true);
 // Cypress.Cookies.defaults({
 //     preserve: ['JSESSIONID', 'dmp_oauth_token','XSRF-TOKEN']
 // });
-Cypress.Commands.add('login', (username, password) => {
+Cypress.Commands.add('loginAs', (user) => {
     cy.once('uncaught:exception', () => false);
-    cy.session(username, () => {
+    cy.session(user, () => {
         cy
             .intercept(`${OKTA_URL}/**`).as('sso')
             .visit('/')
-            .get('#idp-discovery-username', { timeout: 10000 }).type(username)
+            .get('#idp-discovery-username', { timeout: 10000 }).type(users[user].username)
             .get('#idp-discovery-submit', {timeout:100000}).click()
-            .get('#okta-signin-password', {timeout:100000}).type(password)
+            .get('#okta-signin-password', {timeout:100000}).type(users[user].password)
             .get('#okta-signin-submit', {timeout:100000}).click()
         ;
         cy.wait(10000);

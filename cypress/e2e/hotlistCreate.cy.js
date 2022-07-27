@@ -5,7 +5,7 @@ let firstRun = true;
 describe('hotlist.hotlistCreation: Hotlist Page during Hotlist Creation', () => {
 
     before( ()=> {
-        cy.login("hotlistadmin@fico.com", "@Fraud123456");
+        cy.loginAs("hotlistAdmin");
         cy.log("Creating Test Data");
         // hotlistPage.testDataSetup();
         firstRun = false;
@@ -13,7 +13,7 @@ describe('hotlist.hotlistCreation: Hotlist Page during Hotlist Creation', () => 
 
     beforeEach(()=>{
         cy.once('uncaught:exception', () => false);
-        cy.login("hotlistadmin@fico.com", "@Fraud123456");
+        cy.loginAs("hotlistAdmin");
         cy.origin(GATEWAY_URL, () => {
             cy.visit('/#/hotlist').wait(10000);
         })

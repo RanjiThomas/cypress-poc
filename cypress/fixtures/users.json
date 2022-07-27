@@ -1,0 +1,22 @@
+{
+  "hotlistAdmin": {
+    "username": "hotlistadmin@fico.com",
+    "password": "@Fraud123456"
+  },
+  "hotlistManager": {
+    "username": "falconx-hotlistmanagerole@fico.com",
+    "password": "Griffin20220622"
+  },
+  "hotlistUser": {
+    "username": "falconx-hotlistuserole@fico.com",
+    "password": "Griffin20220622"
+  },
+  "hotlistViewer": {
+    "username": "falconx-hotlistviewrole@fico.com",
+    "password": "Griffin20220622"
+  },
+  "nonHotlist": {
+    "username": "falconx-hotlistnorole@fico.com",
+    "password": "Griffin20220622"
+  }
+}
